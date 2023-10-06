@@ -25,19 +25,9 @@ namespace TP3
                     this.Poste = Poste;
                     Nbr_Employer++;
                 
-                if(this.Poste == "INFORMATICIEN" || this.Poste == "INFORMATICIENNE")
-                {
-                    this.SalaireEmployer = 200000;
-                }
-                else if(this.Poste == "COMPTABLE")
-                {
-                    this.SalaireEmployer = 100000;
-
-                }
-                else
-                {
-                    this.SalaireEmployer = 90000;
-                }
+                if(this.Poste == "INFORMATICIEN" || this.Poste == "INFORMATICIENNE") this.SalaireEmployer = 200000;
+                else if(this.Poste == "COMPTABLE")  this.SalaireEmployer = 100000;
+                else this.SalaireEmployer = 90000;
             }
             public void  CalculSalaire()
             {   
@@ -60,15 +50,21 @@ namespace TP3
             String NomEmployer;
             String Sexe;
             DateTime Annee_de_recrutement;
-            String date_transition;
+            //String date_transition;
             String choix="1";
             String Poste;
+            //String jour;
+            //String mois;
+            //String Annee;
+            bool no;
             Console.Clear();
-            int n;
+            int n=0;
           
-            Console.WriteLine("Entrer le nombre d'employer: ");
-            String n1 = Console.ReadLine();
-            n = control_nbr_employer(int.Parse(n1));
+           
+            
+           
+            n = control_nbr_employer();
+
             Console.Clear();
             Salaire[] Employer = new Salaire[n];
             for (int i = 0; i < n; i++)
@@ -80,12 +76,16 @@ namespace TP3
                 Console.WriteLine("\nDonner le sexe de l'employer (notation: M ou F ): ");
                 Sexe = Console.ReadLine();
                 Sexe = control_sexe(Sexe);
-                Console.WriteLine("\nDonner la date de recrutement de l'employer (format: 27/09/2023) :");
-                date_transition = Console.ReadLine();
-                Annee_de_recrutement = control_date(date_transition);
+               
+                Annee_de_recrutement = control_date();
                 Console.WriteLine("\nChoississez votre poste: \n(1) pour Informaticien \n(2) pour Comptable \n(3) pour Secretaire\n");
                 choix = Console.ReadLine();
-                if(choix == "1")
+                while (choix != "1" && choix != "2" && choix != "3")
+                {
+                    Console.WriteLine("\nVeuillez-donnez un choix compris entre 1 et 3 \nChoississez votre poste: \n(1) pour Informaticien \n(2) pour Comptable \n(3) pour Secretaire\n");
+                    choix = Console.ReadLine();
+                }
+                if (choix == "1")
             {
                 if(Sexe == "M")
                 {
@@ -134,25 +134,86 @@ namespace TP3
        
             return name;
         }
-        public static DateTime control_date(String date_transition)
+        public static DateTime control_date()
         {
-            DateTime dd = DateTime.Parse(date_transition);
-            while (dd.Year > DateTime.Now.Year || dd.Year < 2000)
+            String jour, mois, Annee, date_transition;
+            Console.WriteLine("\nDonner la date de recrutement de l'employer\n\nJour :");
+            jour = Console.ReadLine();
+            int n = 0;
+            bool no;
+            while (!int.TryParse(jour, out n))
             {
-                Console.WriteLine("\nErrreur: Annee superieur a celle actuelle");
-                Console.WriteLine("\nVeuillez entrer une date acceptable (format:12/12/2023): ");
-                date_transition = Console.ReadLine();
-                dd = DateTime.Parse(date_transition);
-                if(dd.Year < 2000)
+                Console.WriteLine("Veuillez entrer des entiers \njour: ");
+                jour = Console.ReadLine();
+            }
+            //if(DateTime.MaxValue.CompareTo(jour) < 0)
+            if (int.Parse(jour) < 1 || int.Parse(jour) > DateTime.MaxValue.Day)
+            {
+                //Console.WriteLine("no:" + no);
+                while ( int.Parse(jour) < 1 || int.Parse(jour) > DateTime.MaxValue.Day || !int.TryParse(jour,out n))
+                { 
+                    Console.WriteLine("Erreur jour non valide\njour: ");
+                    jour = Console.ReadLine();
+                    while (!int.TryParse(jour, out n))
+                    {
+                        Console.WriteLine("Veuillez entrer des entiers \njour: ");
+                        jour = Console.ReadLine();
+   
+                    }
+                }
+
+            }
+           
+            Console.WriteLine("Mois :");
+            mois = Console.ReadLine();
+            no = control_nb_employer_2(mois, n);
+            while (!int.TryParse(mois, out n))
+            {
+                Console.WriteLine("Veuillez entrer des entiers \nmois: ");
+                mois = Console.ReadLine();
+            }
+            //if(DateTime.MaxValue.CompareTo(jour) < 0)
+            if (int.Parse(mois) < 1 || int.Parse(mois) > DateTime.MaxValue.Day)
+            {
+                //Console.WriteLine("no:" + no);
+                while (int.Parse(mois) < 1 || int.Parse(mois) > DateTime.MaxValue.Day)
                 {
-                    Console.WriteLine("\nErrreur: Annee inferieur a l'annee de creation de l'entreprise");
-                    Console.WriteLine("\nVeuillez entrer une date acceptable (format:12/12/2023): ");
-                    date_transition = Console.ReadLine();
-                    dd = DateTime.Parse(date_transition);
+                    Console.WriteLine("Erreur mois non valide\nmois: ");
+                    mois = Console.ReadLine();
+                    while (!int.TryParse(mois, out n))
+                    {
+                        Console.WriteLine("Veuillez entrer des entiers \nmois: ");
+                        mois = Console.ReadLine();
+                    }
+                }
+
+            }
+
+            Console.WriteLine("Annee :");
+            Annee = Console.ReadLine();
+            while (!int.TryParse(Annee, out n))
+            {
+                Console.WriteLine("Veuillez entrer des entiers \nAnnee: ");
+                Annee = Console.ReadLine();
+            }
+            if (int.Parse(Annee) > DateTime.Now.Year || int.Parse(Annee) < 2000)
+            {
+                while (int.Parse(Annee) < 2000 || int.Parse(Annee) >  DateTime.Now.Year)
+                {
+                    Console.WriteLine("Erreur Annee non valide\nAnnee: ");
+                    Annee = Console.ReadLine();
+                    while (!int.TryParse(Annee, out n))
+                    {
+                        Console.WriteLine("Veuillez entrer des entiers \nAnnee: ");
+                        Annee = Console.ReadLine();
+                    }
                 }
             }
-                return dd ;
 
+            date_transition = jour + "/" + mois + "/" + Annee;
+            
+            DateTime dd = DateTime.Parse(date_transition);
+                return dd ;
         }
         public static String control_sexe(String sexe)
         {
@@ -164,15 +225,43 @@ namespace TP3
             }
             return sexe;
         }
-        public static int  control_nbr_employer(int nbr_employer)
+        public static int  control_nbr_employer()
         {
-            while(nbr_employer <= 0)
+            int n = 0;
+            int nbr_employer=0;
+            Console.WriteLine("Entrer le nombre d'employer: ");
+            String n1 = Console.ReadLine();
+ 
+            while(!int.TryParse(n1, out n))
+            {
+                Console.WriteLine("Erreur veuillez entrer des entiers\n\nEntrer le nombre d'employer: ");
+                n1 = Console.ReadLine();
+            }
+            while (int.Parse(n1) <= 0)
             {
                 Console.WriteLine("\nVeuillez entrer au moin un employer\nNombre d'employer: ");
-                String tr = Console.ReadLine();
-                nbr_employer = int.Parse(tr);
+                    n1 = Console.ReadLine();
+                while (!int.TryParse(n1, out n))
+                {
+                    Console.WriteLine("Erreur veuillez entrer des entiers\n\nEntrer le nombre d'employer: ");
+                    n1 = Console.ReadLine();
+                }
             }
+            nbr_employer = int.Parse(n1);
             return nbr_employer;
+        }
+        public static bool control_nb_employer_2(String n1 , int n)
+        {
+            bool no = int.TryParse(n1, out n);
+            if (no)
+            {
+               return true;
+            }
+            else
+            {
+
+                return false;
+            }
         }
     }
 }
