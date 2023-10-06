@@ -1,0 +1,8 @@
+C:\Users\NTP\Desktop\projet\Tougam\Tougam\obj\Debug\Tougam.csproj.AssemblyReference.cache
+C:\Users\NTP\Desktop\projet\Tougam\Tougam\obj\Debug\Tougam.csproj.SuggestedBindingRedirects.cache
+C:\Users\NTP\Desktop\projet\Tougam\Tougam\obj\Debug\Tougam.csproj.CoreCompileInputs.cache
+C:\Users\NTP\Desktop\projet\Tougam\Tougam\bin\Debug\Tougam.exe.config
+C:\Users\NTP\Desktop\projet\Tougam\Tougam\bin\Debug\Tougam.exe
+C:\Users\NTP\Desktop\projet\Tougam\Tougam\bin\Debug\Tougam.pdb
+C:\Users\NTP\Desktop\projet\Tougam\Tougam\obj\Debug\Tougam.exe
+C:\Users\NTP\Desktop\projet\Tougam\Tougam\obj\Debug\Tougam.pdb

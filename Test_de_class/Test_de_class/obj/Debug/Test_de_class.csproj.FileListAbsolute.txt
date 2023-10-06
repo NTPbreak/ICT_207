@@ -1,0 +1,8 @@
+C:\Users\NTP\Desktop\projet\Test_de_class\Test_de_class\bin\Debug\Test_de_class.exe.config
+C:\Users\NTP\Desktop\projet\Test_de_class\Test_de_class\bin\Debug\Test_de_class.exe
+C:\Users\NTP\Desktop\projet\Test_de_class\Test_de_class\bin\Debug\Test_de_class.pdb
+C:\Users\NTP\Desktop\projet\Test_de_class\Test_de_class\obj\Debug\Test_de_class.csproj.AssemblyReference.cache
+C:\Users\NTP\Desktop\projet\Test_de_class\Test_de_class\obj\Debug\Test_de_class.csproj.SuggestedBindingRedirects.cache
+C:\Users\NTP\Desktop\projet\Test_de_class\Test_de_class\obj\Debug\Test_de_class.csproj.CoreCompileInputs.cache
+C:\Users\NTP\Desktop\projet\Test_de_class\Test_de_class\obj\Debug\Test_de_class.exe
+C:\Users\NTP\Desktop\projet\Test_de_class\Test_de_class\obj\Debug\Test_de_class.pdb
